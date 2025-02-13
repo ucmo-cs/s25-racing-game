@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c14763qwp8mll"]
+
+[ext_resource type="Texture2D" uid="uid://de05wf74fp4dh" path="res://sprites/car1.png" id="1_yafna"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0p4wj"]
+radius = 5.0
+height = 20.0
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_0p4wj")
+
+[node name="CarSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yafna")

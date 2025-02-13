@@ -55,6 +55,13 @@ InsideDrift={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Wall"
+2d_physics/layer_3="DeathZone"
+2d_physics/layer_4="BackgroundGeneration"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

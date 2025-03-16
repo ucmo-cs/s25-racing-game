@@ -1,16 +1,18 @@
 extends CharacterBody2D
 
 var wheel_base = 70  # Distance from front to rear wheel
-var steering_angle = 45  # Amount that front wheel turns, in degrees
+var steering_angle_fast = 55  # Amount that front wheel turns, in degrees
+var steering_angle_slow = 80
 var steer_direction
-var engine_power = 400  # Forward acceleration force.
+var engine_power = 300  # Forward acceleration force.
 var friction = -55
 var drag = -0.06
 var braking = -450
 var max_speed_reverse = 250
-var slip_speed = 400  # Speed where traction is reduced
-var traction_fast = 2.5 # High-speed traction
-var traction_slow = 10  # Low-speed traction
+var slip_speed = 150  # Speed where traction is reduced
+var traction_fast = 3 # High-speed traction
+var traction_slow = 7  # Low-speed traction
+signal player_speed(speed: float, direction: float)
 
 func _physics_process(delta: float) -> void:
 	#Acceleration
@@ -18,7 +20,11 @@ func _physics_process(delta: float) -> void:
 	
 	#Get Input
 	var turn = Input.get_axis("Left", "Right")
-	steer_direction = turn * deg_to_rad(steering_angle)
+	if velocity.length() > slip_speed:
+		steer_direction = turn * deg_to_rad(steering_angle_fast)
+	else:
+		steer_direction = turn * deg_to_rad(steering_angle_slow)
+	
 	if Input.is_action_pressed("Gas"):
 		acceleration = transform.x * engine_power
 	if Input.is_action_pressed("Brake"):
@@ -55,3 +61,6 @@ func _physics_process(delta: float) -> void:
 	#Calculate Velocity & move_and_slide()
 	velocity += acceleration * delta
 	move_and_slide()
+	
+	#Send out a signal saying what the car's current speed is
+	player_speed.emit(velocity.length(), d)

@@ -1,18 +1,208 @@
-[gd_scene load_steps=4 format=3 uid="uid://c14763qwp8mll"]
+[gd_scene load_steps=11 format=3 uid="uid://c14763qwp8mll"]
 
 [ext_resource type="Script" uid="uid://c4mnrsgndmr6j" path="res://scenes/player.gd" id="1_j34o0"]
-[ext_resource type="Texture2D" uid="uid://d4b6l252b2mw0" path="res://sprites/car1.png" id="1_yafna"]
+[ext_resource type="Texture2D" uid="uid://bpw64evv1eyxs" path="res://sprites/tire1_2.png" id="2_dqkch"]
+[ext_resource type="Texture2D" uid="uid://d4b6l252b2mw0" path="res://sprites/car1.png" id="3_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://dupa5i2okdqs2" path="res://sprites/tire1_1.png" id="4_tuyoq"]
+[ext_resource type="Script" uid="uid://bn4a1w7s0r1xs" path="res://scenes/wheel_animator.gd" id="5_qlg0r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0p4wj"]
 radius = 5.0
 height = 20.0
 
+[sub_resource type="Animation" id="Animation_ur7pv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackRightWheel:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_dqkch")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BackLeftWheel:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_dqkch")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FrontRightWheel:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_dqkch")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FrontLeftWheel:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_dqkch")]
+}
+
+[sub_resource type="Animation" id="Animation_smehm"]
+resource_name = "driving"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FrontLeftWheel:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_tuyoq"), ExtResource("2_dqkch")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FrontRightWheel:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_tuyoq"), ExtResource("2_dqkch")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BackLeftWheel:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_tuyoq"), ExtResource("2_dqkch")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BackRightWheel:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_tuyoq"), ExtResource("2_dqkch")]
+}
+
+[sub_resource type="Animation" id="Animation_fjrip"]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FrontLeftWheel:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_tuyoq")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FrontRightWheel:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_tuyoq")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BackLeftWheel:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_tuyoq")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BackRightWheel:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_tuyoq")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y4r1p"]
+_data = {
+&"RESET": SubResource("Animation_ur7pv"),
+&"driving": SubResource("Animation_smehm"),
+&"idle": SubResource("Animation_fjrip")
+}
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_j34o0")
 
+[node name="FrontLeftWheel" type="Sprite2D" parent="."]
+position = Vector2(6, -6)
+texture = ExtResource("2_dqkch")
+
+[node name="FrontRightWheel" type="Sprite2D" parent="."]
+position = Vector2(6, 6)
+texture = ExtResource("2_dqkch")
+
+[node name="BackLeftWheel" type="Sprite2D" parent="."]
+position = Vector2(-6, -6)
+texture = ExtResource("2_dqkch")
+
+[node name="BackRightWheel" type="Sprite2D" parent="."]
+position = Vector2(-6, 6)
+texture = ExtResource("2_dqkch")
+
 [node name="CarSprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_yafna")
+texture = ExtResource("3_qlg0r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_0p4wj")
+
+[node name="WheelAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_y4r1p")
+}
+script = ExtResource("5_qlg0r")
+
+[connection signal="player_speed" from="." to="WheelAnimator" method="_on_player_player_speed"]

@@ -1,13 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://sjnksoec4muh"]
+[gd_scene load_steps=4 format=3 uid="uid://sjnksoec4muh"]
 
 [ext_resource type="Texture2D" uid="uid://dix2s01xohpx7" path="res://sprites/RaceIsland1_upscayl_4x_realesrgan-x4plus-anime.png" id="1_2kecx"]
 [ext_resource type="PackedScene" uid="uid://c14763qwp8mll" path="res://scenes/player.tscn" id="3_v8jg8"]
+[ext_resource type="Script" uid="uid://c6eagfncr21ec" path="res://scenes/speed.gd" id="3_w8frs"]
 
-[node name="Level" type="Node2D"]
+[node name="Global" type="Node"]
 
 [node name="RaceIsland1Upscayl4xRealesrgan-x4Plus-anime" type="Sprite2D" parent="."]
 position = Vector2(405, 362)
 texture = ExtResource("1_2kecx")
+
+[node name="Wall1" type="StaticBody2D" parent="RaceIsland1Upscayl4xRealesrgan-x4Plus-anime"]
+
+[node name="WallColliders1" type="CollisionPolygon2D" parent="RaceIsland1Upscayl4xRealesrgan-x4Plus-anime/Wall1"]
+polygon = PackedVector2Array(-268, -351, -251, -394, -214, -456, -173, -498, -76, -541, 20, -566, 65, -593, 103, -620, 105, -665, 84, -715, 59, -735, -1, -732, -44, -707, -316, -690, -353, -669, -359, -655, -360, -351, -435, -249, -492, -245, -530, -257, -569, -257, -596, -298, -612, -356, -596, -419, -618, -472, -630, -473, -657, -366, -654, -206, -654, -192, -691, -160, -692, -129, -771, -122, -798, -107, -804, -99, -799, -13, -793, 11, -810, 53, -830, 143, -834, 344, -855, 434, -860, 492, -863, 632, -845, 690, -804, 736, -766, 769, -739, 787, -680, 758, -550, 722, -535, 590, -521, 521, -526, 493, -553, 494, -575, 553, -600, 602, -626, 574, -704, 614, -779, 522, -789, 303, -768, 308, -728, 239, -538, 144, -446, 141, -416, 157, -356, 160, -344, 146, -322, 188, -223, 280, -236, 337, -211, 403, -213, 428, -197, 486, -173, 522, -160, 567, -146, 586, -123, 581, -59, 580, -41, 596, 216, 605, 491, 608, 556, 551, 605, 504, 626, 434, 603, 381, 572, 367, 544, 378, 478, 371, 469, 350, 468, 278, 485, 230, 485, 194, 467, 168, 490, 125, 501, 109, 493, 89, 742, 89, 740, 79, 489, 78, 473, 51, 446, 60, 428, 106, 428, 132, 402, 163, 399, 232, 403, 252, 389, 290, 385, 350, 362, 427, 364, 452, 289, 492, 274, 509, 150, 509, 136, 457, 94, 393, 57, 292, 76, 263, 78, 187, 54, 142, -31, 136, -53, 151, -75, 129, -136, 109, -212, 100, -229, 39, -246, -20, -251, -86, -262, -116, -239, -186, -234, -251)
+
+[node name="Wall2" type="StaticBody2D" parent="RaceIsland1Upscayl4xRealesrgan-x4Plus-anime"]
+
+[node name="WallColliders1" type="CollisionPolygon2D" parent="RaceIsland1Upscayl4xRealesrgan-x4Plus-anime/Wall2"]
+polygon = PackedVector2Array(-979, -19, -948, -60, -945, -105, -943, -136, -930, -125, -922, -158, -845, -225, -832, -205, -824, -237, -805, -232, -755, -347, -765, -376, -738, -409, -738, -446, -714, -478, -716, -506, -704, -506, -688, -526, -667, -538, -652, -560, -645, -551, -628, -565, -553, -573, -530, -523, -513, -500, -492, -501, -490, -381, -484, -376, -484, -487, -477, -487, -469, -501, -487, -606, -487, -678, -479, -678, -472, -668, -451, -714, -452, -732, -437, -759, -425, -762, -358, -807, -330, -823, -307, -827, -291, -847, -276, -842, -264, -859, -275, -887, -62, -896, 86, -889, 144, -870, 191, -800, 243, -757, 254, -724, 263, -538, 252, -496, 252, -447, 222, -447, 198, -433, 180, -408, 175, -387, 165, -373, 148, -386, 46, -381, -14, -361, -52, -294, -52, -249, -69, -232, -70, -171, 7, -29, 32, -6, 60, 9, 122, 28, 211, 51, 247, 81, 250, 192, 237, 255, 247, 292, 260, 304, 247, 368, 256, 370, 266, 308, 274, 297, 287, 247, 307, 246, 307, 106, 293, 63, 292, 11, 266, -54, 253, -63, 456, -409, 478, -1067, -1051, -1073, -1031, -76, -1018, -28, -1004, -10)
+
+[node name="Wall3" type="StaticBody2D" parent="RaceIsland1Upscayl4xRealesrgan-x4Plus-anime"]
+
+[node name="WallColliders1" type="CollisionPolygon2D" parent="RaceIsland1Upscayl4xRealesrgan-x4Plus-anime/Wall3"]
+polygon = PackedVector2Array(-435, 886, -450, 852, -424, 811, -449, 764, -444, 715, -407, 628, -420, 406, -465, 379, -554, 381, -610, 424, -639, 445, -654, 432, -655, 400, -622, 333, -623, 314, -594, 306, -567, 285, -500, 300, -432, 324, -404, 364, -394, 445, -375, 581, -375, 668, -323, 665, -309, 675, -299, 705, -142, 721, -94, 742, -66, 792, 622, 807, 759, 704, 785, 674, 725, 681, 715, 653, 716, 626, 727, 598, 717, 568, 763, 422, 765, 365, 771, 362, 746, 308, 727, 268, 613, 267, 599, 246, 588, 210, 591, 193, 618, 190, 720, 192, 769, 192, 805, 206, 832, 182, 865, 177, 907, 159, 941, 148, 949, 130, 929, 67, 1107, -39, 1104, 992, -395, 979)
 
 [node name="Player" parent="." instance=ExtResource("3_v8jg8")]
 position = Vector2(226, 196)
@@ -15,3 +31,18 @@ rotation = -1.5708
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Speed" type="Label" parent="CanvasLayer"]
+offset_left = 893.0
+offset_top = 573.0
+offset_right = 1002.0
+offset_bottom = 624.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 18
+theme_override_font_sizes/font_size = 37
+text = "Speed"
+script = ExtResource("3_w8frs")
+
+[connection signal="player_speed" from="Player" to="CanvasLayer/Speed" method="_on_player_player_speed"]

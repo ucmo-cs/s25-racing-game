@@ -1,6 +1,4 @@
-extends Node2D
-
-@export var background_section: PackedScene
+extends TileMapLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,3 +10,4 @@ func _process(delta: float) -> void:
 
 func _create_background(x_pos: int, y_pos: int) -> void:
 	pass
+	#Use tilemap.setcell()

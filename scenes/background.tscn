@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhnwkopxschkl"]
+[gd_scene load_steps=5 format=3 uid="uid://dhnwkopxschkl"]
 
-[ext_resource type="Script" path="res://scenes/background.gd" id="1_cjdq4"]
+[ext_resource type="Script" uid="uid://bmls8cimi2816" path="res://scenes/background.gd" id="1_cjdq4"]
 [ext_resource type="PackedScene" uid="uid://rfaulsep8omv" path="res://scenes/background_section.tscn" id="2_4p0fn"]
 
-[node name="Background" type="Node2D"]
-script = ExtResource("1_cjdq4")
-background_section = ExtResource("2_4p0fn")
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_1wk5l"]
+scenes/1/scene = ExtResource("2_4p0fn")
 
-[node name="BackgroundSection" parent="." instance=ExtResource("2_4p0fn")]
+[sub_resource type="TileSet" id="TileSet_ore8j"]
+tile_size = Vector2i(256, 160)
+sources/0 = SubResource("TileSetScenesCollectionSource_1wk5l")
+
+[node name="Background" type="TileMapLayer"]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 1, 0)
+tile_set = SubResource("TileSet_ore8j")
+script = ExtResource("1_cjdq4")

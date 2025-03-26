@@ -1,0 +1,187 @@
+[gd_scene load_steps=14 format=3 uid="uid://dig43jl6chpg2"]
+
+[ext_resource type="Script" uid="uid://b6eq3fsqbymdp" path="res://scenes/checkpoint_clock.gd" id="1_3m6l4"]
+[ext_resource type="Texture2D" uid="uid://d0fwm8yw6yla5" path="res://sprites/checkpoint_clock_base.png" id="1_vojlu"]
+[ext_resource type="Texture2D" uid="uid://bl383ok6dh0va" path="res://sprites/checkpoint_clock_hourhand.png" id="2_y62f8"]
+[ext_resource type="Texture2D" uid="uid://dnvfhyrm1w0sj" path="res://sprites/checkpoint_clock_minutehand.png" id="4_3m6l4"]
+
+[sub_resource type="Animation" id="Animation_sq8i8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CheckpointClockBase/MinuteHandParent:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CheckpointClockBase/SecondHandParent:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [376.991]
+}
+
+[sub_resource type="Animation" id="Animation_3m6l4"]
+resource_name = "spin"
+length = 60.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CheckpointClockBase/SecondHandParent:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 60),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 376.991]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CheckpointClockBase/MinuteHandParent:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 60),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_60nus"]
+_data = {
+&"RESET": SubResource("Animation_sq8i8"),
+&"spin": SubResource("Animation_3m6l4")
+}
+
+[sub_resource type="Animation" id="Animation_60nus"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CheckpointClockBase:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -3)]
+}
+
+[sub_resource type="Animation" id="Animation_176b0"]
+resource_name = "float"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CheckpointClockBase:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -1.5), Vector2(0, 1.5), Vector2(0, -1.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dp73w"]
+_data = {
+&"RESET": SubResource("Animation_60nus"),
+&"float": SubResource("Animation_176b0")
+}
+
+[sub_resource type="Animation" id="Animation_72pk5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CheckpointClockBase:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dp73w"]
+resource_name = "fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CheckpointClockBase:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7rml5"]
+_data = {
+&"RESET": SubResource("Animation_72pk5"),
+&"fade": SubResource("Animation_dp73w")
+}
+
+[node name="CheckpointClock" type="Node2D" node_paths=PackedStringArray("clockspin_animationplayer", "clockfloat_animationplayer", "clockfade_animationplayer")]
+script = ExtResource("1_3m6l4")
+clockspin_animationplayer = NodePath("ClockSpinAnimationPlayer")
+clockfloat_animationplayer = NodePath("ClockFloatAnimationPlayer")
+clockfade_animationplayer = NodePath("ClockFadeAnimationPlayer")
+
+[node name="CheckpointClockBase" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+texture = ExtResource("1_vojlu")
+
+[node name="SecondHandParent" type="Node2D" parent="CheckpointClockBase"]
+position = Vector2(0, 1.5)
+rotation = 376.991
+
+[node name="SecondHand" type="Sprite2D" parent="CheckpointClockBase/SecondHandParent"]
+position = Vector2(0, -3)
+texture = ExtResource("4_3m6l4")
+
+[node name="MinuteHandParent" type="Node2D" parent="CheckpointClockBase"]
+position = Vector2(0, 1.5)
+rotation = 6.28319
+
+[node name="MinuteHand" type="Sprite2D" parent="CheckpointClockBase/MinuteHandParent"]
+position = Vector2(0, -2)
+texture = ExtResource("2_y62f8")
+
+[node name="ClockSpinAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_60nus")
+}
+
+[node name="ClockFloatAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dp73w")
+}
+playback_auto_capture_transition_type = 7
+
+[node name="ClockFadeAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7rml5")
+}
+
+[connection signal="animation_finished" from="ClockFadeAnimationPlayer" to="." method="_on_clock_fade_animation_player_animation_finished"]

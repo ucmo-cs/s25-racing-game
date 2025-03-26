@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbfxbvw4abnjc"]
+
+[ext_resource type="Script" uid="uid://ca14v4m7l54vq" path="res://scenes/checkpoint.gd" id="1_ywqth"]
+[ext_resource type="PackedScene" uid="uid://dig43jl6chpg2" path="res://scenes/checkpoint_clock.tscn" id="1_yyywg"]
+[ext_resource type="PackedScene" uid="uid://2knlao7dadpl" path="res://scenes/ribbon.tscn" id="3_vsimk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywqth"]
+size = Vector2(92, 69)
+
+[node name="Checkpoint" type="Area2D" node_paths=PackedStringArray("clock1", "clock2", "ribbon", "fade_timer")]
+script = ExtResource("1_ywqth")
+clock1 = NodePath("Clock1")
+clock2 = NodePath("Clock2")
+ribbon = NodePath("Ribbon")
+fade_timer = NodePath("FadeTimer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(36, 6.5)
+shape = SubResource("RectangleShape2D_ywqth")
+
+[node name="Ribbon" parent="." instance=ExtResource("3_vsimk")]
+
+[node name="Clock1" parent="." instance=ExtResource("1_yyywg")]
+
+[node name="Clock2" parent="." instance=ExtResource("1_yyywg")]
+
+[node name="FadeTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="FadeTimer" to="." method="_on_fade_timer_timeout"]

@@ -9,10 +9,15 @@ var friction = -55
 var drag = -0.06
 var braking = -450
 var max_speed_reverse = 250
-var slip_speed = 150  # Speed where traction is reduced
+var slip_speed = 200  # Speed where traction is reduced
 var traction_fast = 3 # High-speed traction
 var traction_slow = 7  # Low-speed traction
 signal player_speed(speed: float, direction: float)
+
+var is_player: bool #This is here for other nodes to see this is a player
+
+@export var front_left_wheel: Sprite2D
+@export var front_right_wheel: Sprite2D
 
 func _physics_process(delta: float) -> void:
 	#Acceleration
@@ -64,3 +69,6 @@ func _physics_process(delta: float) -> void:
 	
 	#Send out a signal saying what the car's current speed is
 	player_speed.emit(velocity.length(), d)
+	#Rotate the Front Wheels to make it look visually like the car is turning
+	front_left_wheel.rotation = steer_direction
+	front_right_wheel.rotation = steer_direction

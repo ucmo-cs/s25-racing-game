@@ -55,7 +55,7 @@ func set_ribbon_position(position1: Vector2, position2: Vector2):
 	#Close the loop
 	vertex_list.append(vertex_list[0])
 	#Set polygon to the vertex list
-	polygon = vertex_list
+	polygon = vertex_list.duplicate()
 
-func _on_ribbon_fade_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_ribbon_fade_animation_player_animation_finished(_anim_name: StringName) -> void:
 	queue_free()

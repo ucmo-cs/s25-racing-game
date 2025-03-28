@@ -5,9 +5,11 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yqsag"]
 shader = ExtResource("1_m4bee")
-shader_parameter/wave_amplitude = 3.6
-shader_parameter/wave_frequency = 1.2
-shader_parameter/wave_speed = 1.7
+shader_parameter/wave_amplitude = 4.909
+shader_parameter/wave_frequency = 0.546
+shader_parameter/wave_speed = 2.074
+shader_parameter/pixel_width = 5.0
+shader_parameter/pixel_height = 5.0
 
 [sub_resource type="Animation" id="Animation_gc6ue"]
 length = 0.001
@@ -53,7 +55,7 @@ polygon = PackedVector2Array(0, 0, 94, 0, 94, 16, 0, 16)
 script = ExtResource("2_gc6ue")
 ribbon_width = 10.0
 first_position = Vector2(50, 100)
-second_position = Vector2(200, 100)
+second_position = Vector2(350, 100)
 length_to_vertex_ratio = 10.0
 ribbon_fade_animationplayer = NodePath("RibbonFadeAnimationPlayer")
 

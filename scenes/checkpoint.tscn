@@ -5,17 +5,18 @@
 [ext_resource type="PackedScene" uid="uid://2knlao7dadpl" path="res://scenes/ribbon.tscn" id="3_vsimk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywqth"]
-size = Vector2(92, 69)
+size = Vector2(102, 38)
 
-[node name="Checkpoint" type="Area2D" node_paths=PackedStringArray("clock1", "clock2", "ribbon", "fade_timer")]
+[node name="Checkpoint" type="Area2D" node_paths=PackedStringArray("clock1", "clock2", "ribbon", "fade_timer", "collision_shape")]
 script = ExtResource("1_ywqth")
 clock1 = NodePath("Clock1")
 clock2 = NodePath("Clock2")
 ribbon = NodePath("Ribbon")
 fade_timer = NodePath("FadeTimer")
+collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(36, 6.5)
+position = Vector2(41, 4)
 shape = SubResource("RectangleShape2D_ywqth")
 
 [node name="Ribbon" parent="." instance=ExtResource("3_vsimk")]

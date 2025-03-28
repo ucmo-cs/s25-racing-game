@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://tx67q4oxlbrm"]
+
+[ext_resource type="Script" uid="uid://bgxlck3k4o34d" path="res://scenes/debug_scenes/checkpoint_debug.gd" id="1_4er75"]
+[ext_resource type="Script" uid="uid://twtkysthmcwf" path="res://scenes/checkpoint_manager.gd" id="2_b05yf"]
+[ext_resource type="PackedScene" uid="uid://bbfxbvw4abnjc" path="res://scenes/checkpoint.tscn" id="3_7gqa7"]
+
+[node name="CheckpointDebug" type="Node2D" node_paths=PackedStringArray("checkpoint_manager")]
+script = ExtResource("1_4er75")
+checkpoint_manager = NodePath("CheckpointManager")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.235, 2.235)
+
+[node name="CheckpointManager" type="Node2D" parent="."]
+script = ExtResource("2_b05yf")
+checkpoint_scene = ExtResource("3_7gqa7")

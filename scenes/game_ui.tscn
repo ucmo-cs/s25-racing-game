@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://7mi2vwf6vji0"]
+
+[ext_resource type="Script" uid="uid://c6eagfncr21ec" path="res://scenes/speed.gd" id="1_rns2u"]
+[ext_resource type="Theme" uid="uid://d4k4kan57iefu" path="res://themes/gameui_theme.tres" id="1_u001w"]
+[ext_resource type="Script" uid="uid://sl8taptbwl76" path="res://scenes/game_ui.gd" id="1_u2dgd"]
+[ext_resource type="PackedScene" uid="uid://c32m5n8xm7j8l" path="res://scenes/time.tscn" id="2_u001w"]
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u2dgd")
+
+[node name="Speed" type="Label" parent="."]
+layout_mode = 0
+offset_left = 893.0
+offset_top = 573.0
+offset_right = 1002.0
+offset_bottom = 624.0
+theme = ExtResource("1_u001w")
+text = "Speed:"
+script = ExtResource("1_rns2u")
+
+[node name="Time" parent="." instance=ExtResource("2_u001w")]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 26.0
+offset_right = 384.0
+offset_bottom = 81.0
+theme = ExtResource("1_u001w")
+theme_override_font_sizes/font_size = 25
+text = "Time Remaining: 0"
+
+[connection signal="checkpoint_collected" from="." to="Time" method="_on_game_ui_checkpoint_collected"]
+[connection signal="player_speed" from="." to="Speed" method="_on_game_ui_player_speed"]
+[connection signal="out_of_time" from="Time" to="." method="_on_time_out_of_time"]

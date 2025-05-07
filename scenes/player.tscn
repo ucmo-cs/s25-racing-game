@@ -208,4 +208,7 @@ libraries = {
 }
 script = ExtResource("5_qlg0r")
 
-[connection signal="player_speed" from="." to="WheelAnimator" method="_on_player_player_speed"]
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[connection signal="animate_wheels" from="." to="WheelAnimator" method="_on_player_animate_wheels"]

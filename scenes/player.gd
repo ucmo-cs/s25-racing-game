@@ -12,12 +12,18 @@ var max_speed_reverse = 250
 var slip_speed = 200  # Speed where traction is reduced
 var traction_fast = 3 # High-speed traction
 var traction_slow = 7  # Low-speed traction
-signal player_speed(speed: float, direction: float)
+signal player_speed(speed: float)
+signal animate_wheels(speed: float, direction: float)
 
-var is_player: bool #This is here for other nodes to see this is a player
+func is_player() -> void: #This is just here for Checkpoint functionality (has_method())
+	pass
 
 @export var front_left_wheel: Sprite2D
 @export var front_right_wheel: Sprite2D
+
+func _ready() -> void:
+	global_rotation_degrees = -90
+	global_position = Vector2(0, 120)
 
 func _physics_process(delta: float) -> void:
 	#Acceleration
@@ -68,7 +74,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	#Send out a signal saying what the car's current speed is
-	player_speed.emit(velocity.length(), d)
+	player_speed.emit(velocity.length())
+	animate_wheels.emit(velocity.length(), d)
 	#Rotate the Front Wheels to make it look visually like the car is turning
 	front_left_wheel.rotation = steer_direction
 	front_right_wheel.rotation = steer_direction

@@ -1,0 +1,31 @@
+[gd_scene load_steps=9 format=3 uid="uid://sjnksoec4muh"]
+
+[ext_resource type="Script" uid="uid://77r02q8p30ip" path="res://scenes/global.gd" id="1_2se67"]
+[ext_resource type="PackedScene" uid="uid://relar5r7oa6t" path="res://scenes/game_background.tscn" id="4_nelfd"]
+[ext_resource type="PackedScene" uid="uid://hp80slctns2q" path="res://scenes/main_menu.tscn" id="6_6rlim"]
+[ext_resource type="PackedScene" uid="uid://koitp7ge66dn" path="res://scenes/gameover_menu.tscn" id="7_mmyj5"]
+[ext_resource type="PackedScene" uid="uid://b2e0alo22ryxt" path="res://scenes/point_counter.tscn" id="8_unqd7"]
+[ext_resource type="PackedScene" uid="uid://dillxlfswgq8u" path="res://scenes/road_tile_manager.tscn" id="11_2se67"]
+[ext_resource type="PackedScene" uid="uid://c14763qwp8mll" path="res://scenes/player.tscn" id="12_itjjb"]
+[ext_resource type="PackedScene" uid="uid://7mi2vwf6vji0" path="res://scenes/game_ui.tscn" id="13_suoh8"]
+
+[node name="Global" type="Node" node_paths=PackedStringArray("backgroundcanvaslayer", "uicanvaslayer", "gameholder")]
+script = ExtResource("1_2se67")
+backgroundcanvaslayer = NodePath("BackgroundCanvasLayer")
+uicanvaslayer = NodePath("UICanvasLayer")
+gameholder = NodePath("GameHolder")
+roadtile_manager_scene = ExtResource("11_2se67")
+player_car_scene = ExtResource("12_itjjb")
+game_background_scene = ExtResource("4_nelfd")
+game_ui_scene = ExtResource("13_suoh8")
+start_menu_scene = ExtResource("6_6rlim")
+gameover_menu_scene = ExtResource("7_mmyj5")
+point_counter_scene = ExtResource("8_unqd7")
+
+[node name="BackgroundCanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="GameHolder" type="Node" parent="."]
+
+[node name="UICanvasLayer" type="CanvasLayer" parent="."]
+layer = 2

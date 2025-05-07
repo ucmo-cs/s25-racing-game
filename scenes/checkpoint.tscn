@@ -5,25 +5,27 @@
 [ext_resource type="PackedScene" uid="uid://2knlao7dadpl" path="res://scenes/ribbon.tscn" id="3_vsimk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywqth"]
-size = Vector2(102, 38)
+size = Vector2(136, 19)
 
-[node name="Checkpoint" type="Area2D" node_paths=PackedStringArray("clock1", "clock2", "ribbon", "fade_timer", "collision_shape")]
+[node name="Checkpoint" type="Area2D" node_paths=PackedStringArray("clock1", "clock2", "ribbon", "fade_timer")]
 script = ExtResource("1_ywqth")
 clock1 = NodePath("Clock1")
 clock2 = NodePath("Clock2")
 ribbon = NodePath("Ribbon")
 fade_timer = NodePath("FadeTimer")
-collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(41, 4)
 shape = SubResource("RectangleShape2D_ywqth")
 
 [node name="Ribbon" parent="." instance=ExtResource("3_vsimk")]
+position = Vector2(-46, -9)
+polygon = PackedVector2Array(-21, 0, -10.3151, 0.0791397, 0.69368, 0.16069, 9.381, 0.225044, 18.0726, 0.289421, 33.7179, 0.405304, 47.0374, 0.503967, 57.4648, 0.581207, 68.1839, 0.660606, 77.7423, 0.731407, 87.88, 0.806503, 98.597, 0.885895, 105.553, 0.937416, 114, 1, 114, 17, 105.279, 16.8717, 92.8172, 16.6885, 81.8038, 16.5265, 69.3424, 16.3433, 58.3376, 16.1814, 44.7263, 15.9813, 36, 17, 28.2029, 16.7311, 18.9447, 16.4119, 9.10778, 16.0727, 1.88476, 15.8236, -8.81012, 15.4548, -22, 15)
 
 [node name="Clock1" parent="." instance=ExtResource("1_yyywg")]
+position = Vector2(-68, 0)
 
 [node name="Clock2" parent="." instance=ExtResource("1_yyywg")]
+position = Vector2(68, 0)
 
 [node name="FadeTimer" type="Timer" parent="."]
 one_shot = true

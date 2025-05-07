@@ -1,6 +1,6 @@
 extends AnimationPlayer
 
-func _on_player_player_speed(speed: float, direction: float) -> void:
+func _on_player_animate_wheels(speed: float, direction: float) -> void:
 	if speed > 0:
 		if current_animation == "idle" or "[stop]":
 			play("driving")

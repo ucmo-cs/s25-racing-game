@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://koitp7ge66dn"]
+
+[ext_resource type="Script" uid="uid://cw7fjrby5hkx1" path="res://scenes/gameover_menu.gd" id="1_a1lix"]
+[ext_resource type="Texture2D" uid="uid://c3d0x4t4uc0lj" path="res://sprites/CarTrash.png" id="1_kkdcc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a1lix"]
+bg_color = Color(0, 0.0588235, 0.129412, 1)
+
+[node name="GameOverMenu" type="Control" node_paths=PackedStringArray("points_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a1lix")
+points_label = NodePath("PointsLabel")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a1lix")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 219.0
+offset_top = 50.0
+offset_right = 455.0
+offset_bottom = 448.0
+texture = ExtResource("1_kkdcc")
+
+[node name="TimeGotAway" type="Label" parent="."]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 477.0
+offset_right = 507.0
+offset_bottom = 534.0
+theme_override_font_sizes/font_size = 35
+text = "Time Got Away!"
+horizontal_alignment = 1
+
+[node name="PointsLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 598.0
+offset_top = 115.0
+offset_right = 1009.0
+offset_bottom = 184.0
+theme_override_font_sizes/font_size = 50
+text = "Points: 0"
+horizontal_alignment = 1
+
+[node name="TryAgainButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 636.0
+offset_top = 300.0
+offset_right = 979.0
+offset_bottom = 388.0
+theme_override_font_sizes/font_size = 50
+text = "Try Again?"
+
+[node name="MainMenuButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 636.0
+offset_top = 432.0
+offset_right = 979.0
+offset_bottom = 520.0
+theme_override_font_sizes/font_size = 50
+text = "Main Menu"
+
+[connection signal="pressed" from="TryAgainButton" to="." method="_on_try_again_button_pressed"]
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]

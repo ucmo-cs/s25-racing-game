@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dillxlfswgq8u"]
+[gd_scene load_steps=14 format=3 uid="uid://dillxlfswgq8u"]
 
 [ext_resource type="Script" uid="uid://qoc75o3gx71g" path="res://scenes/road_tile_manager.gd" id="1_1uo3p"]
 [ext_resource type="Script" uid="uid://d03uemxj3o2lx" path="res://scenes/random_road_tile_fetcher.gd" id="2_4c36a"]
@@ -6,9 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://cvqwxdmum04xy" path="res://scenes/road_tiles/roadtile_upup1.tscn" id="4_i25r6"]
 [ext_resource type="PackedScene" uid="uid://cxyqrndlsi3c7" path="res://scenes/road_tiles/roadtile_upright1.tscn" id="5_4tsdn"]
 [ext_resource type="PackedScene" uid="uid://d1e36ecxsjucs" path="res://scenes/road_tiles/roadtile_upleft1.tscn" id="6_gn1a4"]
+[ext_resource type="PackedScene" uid="uid://d1s5n8c61dk8s" path="res://scenes/road_tiles/roadtile_upup2.tscn" id="7_i25r6"]
 [ext_resource type="PackedScene" uid="uid://owvja1wixyd5" path="res://scenes/road_tiles/roadtile_leftleft1.tscn" id="7_st4my"]
 [ext_resource type="PackedScene" uid="uid://cj5v3cngryi5p" path="res://scenes/road_tiles/roadtile_leftup1.tscn" id="8_nmo1o"]
 [ext_resource type="PackedScene" uid="uid://dcdvmrrgcqc7f" path="res://scenes/road_tiles/roadtile_rightright1.tscn" id="9_twkha"]
+[ext_resource type="PackedScene" uid="uid://5b7kbc1qts4" path="res://scenes/road_tiles/roadtile_leftleft2.tscn" id="10_4tsdn"]
 [ext_resource type="PackedScene" uid="uid://db3ire1uiqk8y" path="res://scenes/road_tiles/roadtile_rightup1.tscn" id="10_j7rm8"]
 [ext_resource type="PackedScene" uid="uid://cs46mlujy6m7p" path="res://scenes/road_tiles/roadtile_rightright2.tscn" id="11_5vowj"]
 
@@ -20,8 +22,8 @@ tile_holder = NodePath("TileHolder")
 [node name="RandomRoadTileFetcher" type="Node" parent="."]
 script = ExtResource("2_4c36a")
 start_tile = ExtResource("3_5vowj")
-up_entrance_tiles = Array[PackedScene]([ExtResource("4_i25r6"), ExtResource("5_4tsdn"), ExtResource("6_gn1a4")])
-left_entrance_tiles = Array[PackedScene]([ExtResource("7_st4my"), ExtResource("8_nmo1o")])
+up_entrance_tiles = Array[PackedScene]([ExtResource("4_i25r6"), ExtResource("5_4tsdn"), ExtResource("6_gn1a4"), ExtResource("7_i25r6")])
+left_entrance_tiles = Array[PackedScene]([ExtResource("7_st4my"), ExtResource("8_nmo1o"), ExtResource("10_4tsdn")])
 right_entrance_tiles = Array[PackedScene]([ExtResource("9_twkha"), ExtResource("10_j7rm8"), ExtResource("11_5vowj")])
 
 [node name="TileHolder" type="Node2D" parent="."]
